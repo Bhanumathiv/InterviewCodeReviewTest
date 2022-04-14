@@ -16,6 +16,9 @@ namespace InterviewCodeReviewTest
 			// Assign each email to different thread for performance
 			public void SendNextEmail()
 			{
+				/*instead of creating new threads everytime for a new sendemail request (which is not a good way if huge number of emails are triggered.)
+				Best practice is to make use of thread pooling.
+				ThreadPool.QueueUserWorkItem(new WaitCallback(SendEmail));*/
 				var thread = new Thread(SendEmail);
 				thread.Start();
 			}
